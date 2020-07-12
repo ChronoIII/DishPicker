@@ -41,17 +41,13 @@ namespace RandomApp
 
         private async void RemoveDishFromList(object sender, EventArgs e)
         {
-            // Dish selectedDish = (Dish)lv_dishes.SelectedItem;
             var selectedId = Int32.Parse(((Image)sender).ClassId);
             Dish selectedDish = DishVM.GetDishById(selectedId);
             bool confirm = await DisplayAlert("Remove Dish", "Do you wish to delete \"" + selectedDish.Name + "\" ?", "Yes", "No");
-            if (confirm)
+            if (confirm && DatabaseHelper.Remove(selectedId))
             {
-                if (DatabaseHelper.Remove(selectedId))
-                {
-                    await DisplayAlert("Dish Removed", "\"" + selectedDish.Name + "\" was successfully deleted", "Ok");
-                    DishVM.RefreshList();
-                }
+                await DisplayAlert("Dish Removed", "\"" + selectedDish.Name + "\" was successfully deleted", "Ok");
+                DishVM.RefreshList();
             }
         }
 
