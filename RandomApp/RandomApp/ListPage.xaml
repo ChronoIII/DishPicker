@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:RandomApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="RandomApp.ListPage">
+
+    <ContentPage.BindingContext>
+        <vm:RandomDishViewModel />
+    </ContentPage.BindingContext>
+    
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                     Margin="25,25,25,25">
+            <Label Text="Dishes" FontSize="Large" FontAttributes="Bold"
+                   HorizontalOptions="CenterAndExpand"/>
+            <ListView x:Name="lv_dishes"  ItemsSource="{Binding DishList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                     Orientation="Horizontal" Padding="25,14,25,6" Margin="0,0,0,30"
+                     HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
+            <Entry x:Name="entry_dish" Placeholder="Dish Name" PlaceholderColor="DimGray"
+                   FontSize="Medium" TextColor="Black"
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"/>
+            
+            <Button Text="Add"
+                    ImageSource="add.png" ContentLayout="left,10"
+                    WidthRequest="85" HeightRequest="50"
+                    Margin="10,0,0,12"
+                    BorderColor="#333" BorderWidth="3" CornerRadius="10"
+                    VerticalOptions="End" HorizontalOptions="End"
+                    Clicked="PushDishToList"/>
+            
+        </StackLayout>
+
+        <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                 BackgroundColor="#292929"
+                 HeightRequest="70"/>
+
+        <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                 VerticalOptions="Start"
+                 BackgroundColor="Firebrick"
+                 HeightRequest="5"/>
+
+        <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                 VerticalOptions="End"
+                 BackgroundColor="Firebrick"
+                 HeightRequest="5"/>
+
+        <Image Grid.Row="0" Grid.Column="0" 
+               Source="back.png"
+               HeightRequest="40" WidthRequest="40"
+               Margin="20,0,0,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackToMain"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <BoxView Grid.Row="0" Grid.Column="2" 
+               HeightRequest="35" WidthRequest="35"
+               Margin="20,0,15,0" />
+
+        <Label Grid.Row="0" Grid.Column="1"
+               Text="Dish" TextColor="White"
+               VerticalOptions="Start"
+               HorizontalOptions="Center"
+               FontSize="20"
+               FontAttributes="Bold"
+               Margin="0,5,52,0"/>
+
+        <BoxView Grid.Row="0" Grid.Column="1" 
+                 BackgroundColor="White"
+                 HeightRequest="2" WidthRequest="90"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"/>
+
+        <Label Grid.Row="0" Grid.Column="1"
+               Text="Picker" TextColor="White"
+               VerticalOptions="End"
+               HorizontalOptions="Center"
+               FontSize="20"
+               FontAttributes="Bold"
+               Margin="50,0,15,8"/>
+    </Grid>
+    
+</ContentPage>
