@@ -6,5 +6,7 @@ Just fill the list with your dish preference and app will choose randomly.
 
 :thumbsup: :thumbsup: :thumbsup: 
 
-![main_page](https://github.com/ChronoIII/DishPicker/blob/master/Sample/Android/1.PNG?raw=true)
-![list_page](https://github.com/ChronoIII/DishPicker/blob/master/Sample/Android/2.PNG?raw=true)
+<p align="center">
+  <img src="https://github.com/ChronoIII/DishPicker/blob/master/Sample/Android/1.PNG?raw=true" width="300" height="600">
+  <img src="https://github.com/ChronoIII/DishPicker/blob/master/Sample/Android/2.PNG?raw=true" width="300" height="600">
+</p>
