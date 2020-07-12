@@ -47,17 +47,15 @@ namespace RandomApp.ViewModels
             return DishList[selectedIndex];
         }
 
-        public void AddDishToList(string newDish)
-        {
-            DishList.Add(new Dish()
-            {
-                Name = newDish
-            });
-        }
-
         public void RefreshList()
         {
             DishList = DatabaseHelper.Read();
+        }
+
+        public Dish GetDishById(int DishId)
+        {
+            var index = DishList.FindIndex(x => x.Id == DishId);
+            return DishList[index];
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

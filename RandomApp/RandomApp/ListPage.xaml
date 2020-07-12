@@ -23,14 +23,35 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <BoxView BackgroundColor="#eee"
+                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                 Margin="25,25,25,22"/>
+
         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                     Margin="25,25,25,25">
+                     Margin="25,25,25,25" BackgroundColor="White">
             <Label Text="Dishes" FontSize="Large" FontAttributes="Bold"
                    HorizontalOptions="CenterAndExpand"/>
+            <BoxView BackgroundColor=" #eee"
+                     HeightRequest="3"/>
             <ListView x:Name="lv_dishes"  ItemsSource="{Binding DishList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" TextColor="Black"/>
+                        <!-- <TextCell Text="{Binding Name}" TextColor="Black"/> -->
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" TextColor="Black" 
+                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Image Source="delete"
+                                       WidthRequest="40" HeightRequest="40"
+                                       HorizontalOptions="End" VerticalOptions="CenterAndExpand"
+                                       ClassId="{Binding Id}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="RemoveDishFromList" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>                            
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
